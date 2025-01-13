@@ -4,7 +4,7 @@ include "../../config/database.php";
 
 $nik = $_SESSION['nik'];
 
-$dataPengaduan = getPengaduanByNik($conn, $nik);
+$dataPengaduan = getPengaduanProcess($conn);
 ?>
 
 <div class="card shadow">
@@ -35,19 +35,19 @@ $dataPengaduan = getPengaduanByNik($conn, $nik);
                                             <?= $data['status'] ?>
                                         </span>
                                     </td>
-                                    <td class="d-flex flex-column gap-1">
-                                        <a href="?url=detail-pengaduan&id=<?= $data['id_pengaduan'] ?>" class="btn btn-primary btn-sm text-start">
+                                    <td class="d-flex flex-column gap-2">
+                                        <a href="?url=detail-pengaduan&id=<?= $data['id_pengaduan'] ?>&role=petugas" class="btn btn-primary btn-sm text-start">
                                             <i class="fa-solid fa-triangle-exclamation"></i>
                                             <span class="ms-1">Lihat Detail</span></a>
-                                        <a href="?url=lihat-tanggapan&id=<?= $data['id_pengaduan'] ?>" class="btn btn-secondary btn-sm text-start">
+                                        <a href="?url=beri-tanggapan&id=<?= $data['id_pengaduan'] ?>" class="btn btn-secondary btn-sm text-start">
                                             <i class="fa-solid fa-comment"></i>
-                                            <span class="ms-1">Lihat Tanggapan</span></a>
+                                            <span class="ms-1">Beri Tanggapan</span></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
-                                <td colspan="5" class="text-center">Tidak ada data pengaduan.</td>
+                                <td colspan="5" class="text-center">Tidak ada data pengaduan masuk.</td>
                             </tr>
                         <?php endif; ?>
                     </tbody>

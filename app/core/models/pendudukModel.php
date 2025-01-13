@@ -1,5 +1,13 @@
 <?php
 
+// Mendapatkan semua data penduduk
+function getAllPenduduk($conn)
+{
+    $sql = "SELECT * FROM tb_penduduk ORDER BY created_at ASC";
+    $result = mysqli_query($conn, $sql);
+    return mysqli_fetch_all($result, MYSQLI_ASSOC);
+}
+
 // Mencari penduduk berdasarkan username
 function getPendudukByUsername($conn, $username)
 {
@@ -33,9 +41,17 @@ function registerPenduduk($conn, $data)
     return mysqli_stmt_execute($stmt);
 }
 
+// Mendapat data penduduk by NIK
 function getPendudukByNik($conn, $nik)
 {
     $sql = "SELECT * FROM tb_penduduk WHERE nik_penduduk = '$nik'";
     $result = mysqli_query($conn, $sql);
     return mysqli_fetch_assoc($result);
+}
+
+// Menghapus penduduk
+function deletePenduduk($conn, $nik)
+{
+    $sql = "DELETE FROM tb_penduduk WHERE nik_penduduk ='$nik'";
+    return mysqli_query($conn, $sql);
 }

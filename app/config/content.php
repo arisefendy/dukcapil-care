@@ -43,33 +43,58 @@ if (isset($_GET['url'])) {
             switch ($url) {
                 case 'profil':
                     $pageTitle = "Profil";
-                    // include "profil.php";
-                    echo "Halaman Profil";
+                    include "profil.php";
                     break;
                 case 'data-petugas':
                     $pageTitle = "Data Petugas";
-                    // include "dataPetugas.php";
-                    echo "Halaman Data Petugas";
+                    include "masterData/petugas/dataPetugas.php";
+                    break;
+                case 'detail-petugas':
+                    $pageTitle = "Detail Petugas";
+                    include "masterData/petugas/detailPetugas.php";
+                    break;
+                case 'tambah-petugas':
+                    $pageTitle = "Tambah Petugas";
+                    include "masterData/petugas/tambahPetugas.php";
+                    break;
+                case 'hapus-petugas':
+                    include 'delete.php';
                     break;
                 case 'data-penduduk':
                     $pageTitle = "Data Penduduk";
-                    // include "dataPenduduk.php";
-                    echo "Halaman Data Penduduk";
+                    include "masterData/penduduk/dataPenduduk.php";
+                    break;
+                case 'detail-penduduk':
+                    $pageTitle = "Detail Penduduk";
+                    include "masterData/penduduk/detailPenduduk.php";
+                    break;
+                case 'hapus-penduduk':
+                    include 'delete.php';
                     break;
                 case 'pengaduan-masuk':
-                    $pageTitle = "Pengaduan Masuk";
-                    // include "pengaduanMasuk.php";
-                    echo "Halaman Pengaduan Masuk";
+                    $pageTitle = "Data Pengaduan Masuk";
+                    include "pengaduan/pengaduanMasuk.php";
                     break;
                 case 'pengaduan-selesai':
-                    $pageTitle = "Pengaduan Selesai";
-                    // include "pengaduanSelesai.php";
-                    echo "Halaman Pengaduan Selesai";
+                    $pageTitle = "Data Pengaduan Selesai";
+                    include "pengaduan/pengaduanSelesai.php";
+                    break;
+                case 'detail-pengaduan':
+                    $pageTitle = "Detail Pengaduan";
+                    include "../penduduk/detailPengaduan.php";
+                    break;
+                case 'lihat-tanggapan':
+                    $pageTitle = "Lihat Tanggapan";
+                    include "../penduduk/lihatTanggapan.php";
+                    break;
+                case 'beri-tanggapan':
+                    $pageTitle = "Beri Tanggapan";
+                    include "pengaduan/beriTanggapan.php";
                     break;
                 default:
                     $pageTitle = "Beranda Admin";
-                    // include "beranda.php";
-                    echo "Halaman Beranda Admin";
+                    include "beranda.php";
+                    // echo "Halaman Beranda Admin";
                     break;
             }
     }
@@ -81,8 +106,8 @@ if (isset($_GET['url'])) {
             break;
         case 'admin':
             $pageTitle = "Beranda Admin";
-            // include "berandaAdmin.php";
-            echo "Halaman Beranda Admin";
+            include "beranda.php";
+            // echo "Halaman Beranda Admin";
             break;
         default:
             header('Location: ../../../public/index.php');

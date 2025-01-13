@@ -1,25 +1,31 @@
 // Sidebar Toggle
 const hamburger = document.querySelector(".toggle-btn");
 const sidebar = document.querySelector("#sidebar");
+const mainContent = document.querySelector(".main");
 
-if (hamburger && sidebar) {
+if (hamburger && sidebar && mainContent) {
   // Fungsi untuk toggle sidebar
   hamburger.addEventListener("click", () => {
     sidebar.classList.toggle("active");
+    mainContent.classList.toggle("active");
   });
 
   // Otomatis set sidebar menjadi active ketika viewport !== mobile
   window.addEventListener("resize", () => {
     if (window.innerWidth > 768) {
       sidebar.classList.add("active");
+      mainContent.classList.add("active");
     } else {
       sidebar.classList.remove("active");
+      mainContent.classList.remove("active");
+      mainContent.style.marginLeft = "0";
     }
   });
 
   // Inisialisasi sidebar
   if (window.innerWidth > 768) {
     sidebar.classList.add("active");
+    mainContent.classList.add("active");
   }
 }
 

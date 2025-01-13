@@ -1,7 +1,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dukcapil Care Jombang - Home</title>
+    <title>Dukcapil Care Jombang</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../../../public/assets/css/bootstrap.min.css">
 

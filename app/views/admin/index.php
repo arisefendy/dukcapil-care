@@ -1,4 +1,5 @@
 <?php include "../../core/utils/session.php"; ?>
+<?php include_once "../../core/utils/alerts.php"; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,14 +33,37 @@
         <!-- DataTables JS -->
         <script>
             $(document).ready(function() {
-                $('#dataPengaduanTable').DataTable({
-                    "language": {
-                        "url": "//cdn.datatables.net/plug-ins/1.13.6/i18n/id.json"
-                    },
-                    "order": [
-                        [0, "desc"]
-                    ],
-                });
+                if ($('#dataPengaduanTable').length) {
+                    $('#dataPengaduanTable').DataTable({
+                        "language": {
+                            "url": "//cdn.datatables.net/plug-ins/1.13.6/i18n/id.json"
+                        },
+                        "order": [
+                            [0, "desc"]
+                        ],
+                    });
+                }
+
+                if ($('#dataPetugasTable').length) {
+                    $('#dataPetugasTable').DataTable({
+                        "language": {
+                            "url": "//cdn.datatables.net/plug-ins/1.13.6/i18n/id.json"
+                        },
+                        "order": [
+                            [0, "asc"]
+                        ],
+                        "paging": true,
+                    });
+                }
+
+                if ($('#dataPendudukTable').length) {
+                    $('#dataPendudukTable').DataTable({
+                        "language": {
+                            "url": "//cdn.datatables.net/plug-ins/1.13.6/i18n/id.json"
+                        },
+                        "paging": true,
+                    });
+                }
             });
         </script>
 </body>

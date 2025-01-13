@@ -1,11 +1,11 @@
 <?php
 include "../../core/utils/session.php";
 include "../../config/database.php";
-include "../../core/models/pendudukModel.php";
+include "../../core/models/petugasModel.php";
 
-$nik = $_SESSION['nik'];
+$nik = $_GET['id'];
 
-$userData = getPendudukByNik($conn, $nik);
+$userData = getPetugasByNik($conn, $nik);
 
 ?>
 
@@ -28,7 +28,7 @@ $userData = getPendudukByNik($conn, $nik);
                     <tbody>
                         <tr>
                             <th scope="row" class="text-secondary">NIK</th>
-                            <td><?= htmlspecialchars($userData['nik_penduduk'], ENT_QUOTES, 'UTF-8') ?></td>
+                            <td><?= htmlspecialchars($userData['nik_petugas'], ENT_QUOTES, 'UTF-8') ?></td>
                         </tr>
                         <tr>
                             <th scope="row" class="text-secondary">Nama Lengkap</th>
@@ -50,12 +50,20 @@ $userData = getPendudukByNik($conn, $nik);
                             <th scope="row" class="text-secondary">Alamat</th>
                             <td><?= htmlspecialchars($userData['alamat'], ENT_QUOTES, 'UTF-8') ?></td>
                         </tr>
+                        <tr>
+                            <th scope="row" class="text-secondary">Level</th>
+                            <td><?= htmlspecialchars($userData['nama_level'], ENT_QUOTES, 'UTF-8') ?></td>
+                        </tr>
                     </tbody>
                 </table>
 
                 <div class="text-end mt-3">
+                    <a href="?url=data-petugas" class="btn btn-secondary me-2">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span class="ms-2">Kembali</span>
+                    </a>
                     <button class="btn btn-primary">
-                        <i class="fa-solid fa-edit"></i> Edit Profil
+                        <i class="fa-solid fa-edit"></i> Ubah Data
                     </button>
                 </div>
             </div>

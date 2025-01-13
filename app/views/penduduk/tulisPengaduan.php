@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (move_uploaded_file($_FILES['foto']['tmp_name'], $targetFilePath)) {
             $file = $fileName;
         } else {
-            $redirectUrl = 'tulisPengaduan.php';
+            $redirectUrl = '?url=tulis-pengaduan';
             showAlert('error', 'Gagal mengupload foto!', 'Pastikan file yang diupload memiliki berupa foto/gambar', $redirectUrl);
         }
     }
@@ -40,10 +40,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $result = addPengaduan($conn, $data);
     if ($result) {
-        $redirectUrl = 'index.php';
+        $redirectUrl = '?url-riwayat-pengaduan';
         showAlert('success', 'Pengaduan berhasil diajukan!', '', $redirectUrl);
     } else {
-        $redirectUrl = 'tulisPengaduan.php';
+        $redirectUrl = '?url=tulis-pengaduan';
         showAlert('error', 'Gagal membuat pengaduan!', '', $redirectUrl);
     }
 }

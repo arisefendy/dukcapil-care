@@ -1,7 +1,7 @@
 <aside id="sidebar">
     <div class="d-flex justify-content-between p-4 border-bottom border-success-subtle">
         <div class="sidebar-logo">
-            <a href="index.php"><img src="../../../public/assets/images/jombang-logo.png" alt="Logo" class="img-fluid" style="max-height: 40px;"> <span class="ml-2">Dukcapil Care</span></a>
+            <a href="index.php"><img src="../../../public/assets/images/jombang-logo.png" alt="Logo" class="img-fluid" style="max-height: 40px;"> <span class="ml-2">Dukcapil Care Kab. Jombang</span></a>
         </div>
         <button class="toggle-btn border-0">
             <i id="icon" class="fa-solid fa-bars-staggered"></i>

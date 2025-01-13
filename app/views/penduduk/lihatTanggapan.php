@@ -3,14 +3,22 @@ include "../../core/utils/session.php";
 include "../../core/models/pengaduanModel.php";
 include "../../config/database.php";
 
+// Mendapatkan role dari URL
+$role = isset($_GET['role']) ? $_GET['role'] : 'penduduk';
 $id = $_GET['id'];
 
 if (empty($id)) {
     header('Location: index.php');
+    exit;
 }
 
-// $data = getPengaduanById($conn, $id);
-$sql = "SELECT * FROM tb_pengaduan, tb_tanggapan WHERE tb_tanggapan.id_pengaduan='$id' AND tb_pengaduan.id_pengaduan='$id'";
+// Query data 
+$sql = "SELECT p.*, t.*, k.nama_kategori, a.nama
+        FROM tb_pengaduan p
+        JOIN tb_kategori_pengaduan k ON p.id_kategori = k.id_kategori
+        JOIN tb_tanggapan t ON p.id_pengaduan = t.id_pengaduan
+        LEFT JOIN tb_petugas a ON t.nik_petugas = a.nik_petugas
+        WHERE p.id_pengaduan = '$id'";
 
 $result = mysqli_query($conn, $sql);
 
@@ -20,25 +28,53 @@ $result = mysqli_query($conn, $sql);
     <?php include "../templates/cardHeader.php" ?>
 
     <div class="card-body p-4">
-        <?php
-        if (mysqli_num_rows($result) == 0) {
+        <?php if (mysqli_num_rows($result) == 0) {
             echo "<div class='alert alert-danger'>Maaf, Pengaduan anda belum ditanggapi.</div>";
         } else {
             $data = mysqli_fetch_array($result, MYSQLI_ASSOC);
-
+            if (!$data) {
+                echo "<div class='alert alert-danger'>Gagal mengambil data pengaduan.</div>";
+                exit;
+            }
         ?>
-            <form class="d-flex flex-column gap-3 p-3">
-                <h4 class="text-center mb-2">Lihat Tanggapan</h4>
+
+            <form class="d-flex flex-column gap-3">
+
+                <?php
+                if ($role === 'petugas'):
+                ?>
+                    <div class="form-group">
+                        <label for="nik" class="mb-1">NIK</label>
+                        <input type="text" class="form-control" placeholder="<?= htmlspecialchars($data['nik_penduduk']) ?>" readonly></input>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nama" class="mb-1">Nama</label>
+                        <input type="text" class="form-control" placeholder="<?= htmlspecialchars($data['nama']) ?>" readonly></input>
+                    </div>
+                <?php endif; ?>
 
                 <div class="form-group">
-                    <label for="pesan" class="mb-1">Isi Laporan</label>
-                    <textarea class="form-control" placeholder="<?= $data['pesan'] ?>" readonly></textarea>
+                    <label for="kategori" class="mb-1">Kategori Pengaduan</label>
+                    <input class="form-control" placeholder="<?= htmlspecialchars($data['nama_kategori']) ?>" readonly></input>
+                </div>
+
+                <div class="form-group">
+                    <label for="pesan" class="mb-1">Isi Pengaduan</label>
+                    <textarea class="form-control" placeholder="<?= htmlspecialchars($data['pesan']) ?>" readonly></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="pesan" class="mb-1">Tanggapan</label>
-                    <textarea class="form-control" placeholder="<?= $data['tanggapan'] ?>" readonly></textarea>
+                    <textarea class="form-control" placeholder="<?= htmlspecialchars($data['tanggapan']) ?>" readonly></textarea>
                 </div>
+
+                <?php if ($role === 'petugas'): ?>
+                    <div class="form-group">
+                        <label for="pesan" class="mb-1">Petugas</label>
+                        <input type="text" class="form-control" placeholder="<?= htmlspecialchars($data['nama']) ?>" readonly>
+                    </div>
+                <?php endif; ?>
 
                 <div class="form-group">
                     <label for="foto" class="mb-1">Lampiran</label>
@@ -69,12 +105,16 @@ $result = mysqli_query($conn, $sql);
                     <?php endif; ?>
                 </div>
             </form>
+
         <?php } ?>
 
-        <a href="?url=riwayat-pengaduan" class="btn btn-secondary">
-            <i class="fa-solid fa-arrow-left"></i>
-            <span class="ms-2">Kembali</span>
+        <?php if ($role === 'petugas') {
+            echo "<a href='?url=pengaduan-masuk' class='btn btn-secondary'>";
+        } else {
+            echo "<a href='?url=riwayat-pengaduan' class='btn btn-secondary'>";
+        } ?>
+        <i class="fa-solid fa-arrow-left"></i>
+        <span class="ms-2">Kembali</span>
         </a>
-
     </div>
 </div>

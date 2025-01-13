@@ -1,13 +1,13 @@
 <?php
 include "../app/config/database.php";
-include "../app/core/models/adminModel.php";
+include "../app/core/models/petugasModel.php";
 include "../app/core/utils/alerts.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = mysqli_escape_string($conn, $_POST['username']);
     $password = mysqli_escape_string($conn, $_POST['password']);
 
-    $data = getAdminByUsername($conn, $username);
+    $data = getPetugasByUsername($conn, $username);
 
     if ($data) {
         if (password_verify($password, $data['password'])) {
@@ -19,11 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             showAlert("success", "Login Berhasil!", '', $redirectUrl);
         } else {
-            $redirectUrl = "index.php";
+            $redirectUrl = "admin-login.php";
             showAlert("error", "Password salah!", '', $redirectUrl);
         }
     } else {
-        $redirectUrl = "index.php";
+        $redirectUrl = "admin-login.php";
         showAlert("error", "Username tidak ditemukan!", '', $redirectUrl);
     }
 }
