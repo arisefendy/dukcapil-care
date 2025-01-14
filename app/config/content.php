@@ -83,6 +83,9 @@ if (isset($_GET['url'])) {
                     $pageTitle = "Detail Pengaduan";
                     include "../penduduk/detailPengaduan.php";
                     break;
+                case 'hapus-pengaduan':
+                    include 'delete.php';
+                    break;
                 case 'lihat-tanggapan':
                     $pageTitle = "Lihat Tanggapan";
                     include "../penduduk/lihatTanggapan.php";

@@ -67,13 +67,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body class="relative">
-    <a href="admin-login.php" class="position-absolute btn btn-outline-success top-0 end-0 mt-3 me-3">Login Admin</a>
+    <a href="admin-login.php" class="position-absolute btn btn-success top-0 end-0 mt-3 me-3">Login Admin</a>
 
     <form action="" method="POST" class="form-signin">
         <div class="text-center mb-4">
             <img class="mb-4" src="assets/images/jombang-logo.png" alt="Logo Pemkab Jombang" width="72">
             <h1 class="h3 mb-3 font-weight-normal">Dukcapil Care Jombang</h1>
-            <p>Selamat Datang di Aplikasi Pengaduan Dinas Kependudukan & Pencatatan Sipil Kabupaten Jombang!</p>
+            <p>Selamat Datang di Sistem Informasi Pengaduan Masyarakat Dinas Kependudukan & Pencatatan Sipil Kabupaten Jombang!</p>
         </div>
 
         <div class="form-label-group">

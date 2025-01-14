@@ -78,11 +78,11 @@ $result = mysqli_query($conn, $sql);
 
                 <div class="form-group">
                     <label for="foto" class="mb-1">Lampiran</label>
-                    <?php if (!empty($data['file'])): ?>
+                    <?php if (!empty($data['file_tanggapan'])): ?>
                         <?php
                         // Ambil ekstensi file
-                        $fileExtension = pathinfo($data['file'], PATHINFO_EXTENSION);
-                        $filePath = "../../../public/assets/uploads/" . htmlspecialchars($data['file'], ENT_QUOTES, 'UTF-8');
+                        $fileExtension = pathinfo($data['file_tanggapan'], PATHINFO_EXTENSION);
+                        $filePath = "../../../public/assets/uploads/tanggapan/" . htmlspecialchars($data['file_tanggapan'], ENT_QUOTES, 'UTF-8');
                         ?>
 
                         <div class="mb-3 py-2">
@@ -109,7 +109,7 @@ $result = mysqli_query($conn, $sql);
         <?php } ?>
 
         <?php if ($role === 'petugas') {
-            echo "<a href='?url=pengaduan-masuk' class='btn btn-secondary'>";
+            echo "<a href='?url=pengaduan-selesai' class='btn btn-secondary'>";
         } else {
             echo "<a href='?url=riwayat-pengaduan' class='btn btn-secondary'>";
         } ?>

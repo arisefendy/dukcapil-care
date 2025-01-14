@@ -13,7 +13,10 @@ function getAllPetugas($conn)
 // Mendapatkan username admin
 function getPetugasByUsername($conn, $username)
 {
-    $sql = "SELECT * FROM tb_petugas WHERE username = ?";
+    $sql = "SELECT p.*, l.nama_level
+            FROM tb_petugas p
+            JOIN tb_level_petugas l ON p.id_level = l.id_level
+            WHERE username = ?";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, 's', $username);
     mysqli_stmt_execute($stmt);
@@ -78,6 +81,24 @@ function addPetugas($conn, $data)
         $data['alamat'],
         $data['fotoProfil'],
         $data['level'],
+    );
+
+    return mysqli_stmt_execute($stmt);
+}
+
+// Update data
+function updatePetugas($conn, $data)
+{
+    $sql = 'UPDATE tb_petugas SET nama = ?, email = ?, no_telp = ?, alamat = ? WHERE nik_petugas = ?';
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param(
+        $stmt,
+        'sssss',
+        $data['nama'],
+        $data['email'],
+        $data['no_telp'],
+        $data['alamat'],
+        $data['nik']
     );
 
     return mysqli_stmt_execute($stmt);

@@ -55,3 +55,21 @@ function deletePenduduk($conn, $nik)
     $sql = "DELETE FROM tb_penduduk WHERE nik_penduduk ='$nik'";
     return mysqli_query($conn, $sql);
 }
+
+// Update penduduk
+function updatePenduduk($conn, $data)
+{
+    $sql = 'UPDATE tb_penduduk SET nama = ?, email = ?, no_telp = ?, alamat = ? WHERE nik_penduduk = ?';
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param(
+        $stmt,
+        'sssss',
+        $data['nama'],
+        $data['email'],
+        $data['no_telp'],
+        $data['alamat'],
+        $data['nik']
+    );
+
+    return mysqli_stmt_execute($stmt);
+}

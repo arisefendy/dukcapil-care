@@ -36,7 +36,7 @@ Ikuti langkah-langkah berikut untuk menjalankan proyek ini secara lokal:
 2. **Start Local Server**
    - Gunakan XAMPP atau Laragon untuk menjalankan server lokal.
 3. **Buat Database**
-   - Buat database MySQL baru dengan nama `db_dukcapil-care`.
+   - Buat database MySQL baru dengan nama `db_dukcapil_care`.
 4. **Import Database**
    - Import file database `db_dukcapil_care.sql` yang terletak di folder `database` ke dalam database yang telah dibuat.
 5. **Akses Aplikasi**

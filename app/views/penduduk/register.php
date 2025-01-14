@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="text-center mb-4">
             <img class="mb-4" src="../../../public/assets/images/jombang-logo.png" alt="Logo Pemkab Jombang" width="72">
             <h1 class="h3 mb-3 font-weight-normal">Dukcapil Care Jombang</h1>
-            <p>Silahkan Masukan Biodata untuk Mendaftar Aplikasi Pengaduan Dispendukcapil Jombang.</p>
+            <p>Silahkan Masukan Biodata untuk Mendaftar Aplikasi Pengaduan Masyarakat Dispendukcapil Jombang.</p>
         </div>
 
         <div class="form-label-group">

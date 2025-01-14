@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <div class="form-group">
                 <label for="pesan" class="mb-1">Isi Laporan</label>
-                <textarea class="form-control" id="pesan" name="pesan" rows="5" placeholder="Jelaskan pengaduan Anda secara rinci..." required></textarea>
+                <textarea class="form-control" id="pesan" name="pesan" rows="5" placeholder="Silahkan menyampaikan pertanyaan, keluhan, saran, masukan dan kritik anda disini. Dimohon untuk menyertakan: NIK, No KK, Nama Lengkap, dan Pertanyaan anda secara rinci." required></textarea>
             </div>
 
             <div class="form-group">

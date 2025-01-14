@@ -86,9 +86,10 @@ function getPengaduanSummary($conn)
 // Menghitung jumlah pengaduan status 'proses'
 function getPengaduanProcess($conn)
 {
-    $sql = "SELECT p.*, k.nama_kategori 
+    $sql = "SELECT p.*, k.nama_kategori, u.nama AS nama_penduduk 
             FROM tb_pengaduan p
             JOIN tb_kategori_pengaduan k ON p.id_kategori = k.id_kategori 
+            JOIN tb_penduduk u ON p.nik_penduduk = u.nik_penduduk
             WHERE p.status = 'proses'";
 
     $result = mysqli_query($conn, $sql);
@@ -98,9 +99,10 @@ function getPengaduanProcess($conn)
 // Menghitung jumlah pengaduan status 'selesai'
 function getPengaduanCompleted($conn)
 {
-    $sql = "SELECT p.*, k.nama_kategori 
+    $sql = "SELECT p.*, k.nama_kategori, u.nama AS nama_penduduk 
             FROM tb_pengaduan p
-            JOIN tb_kategori_pengaduan k ON p.id_kategori = k.id_kategori 
+            JOIN tb_kategori_pengaduan k ON p.id_kategori = k.id_kategori
+            JOIN tb_penduduk u ON p.nik_penduduk = u.nik_penduduk
             WHERE p.status = 'selesai'";
 
     $result = mysqli_query($conn, $sql);
@@ -133,4 +135,11 @@ function changePengaduanStatus($conn, $id)
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, 's', $id);
     return mysqli_stmt_execute($stmt);
+}
+
+// Hapus data pengaduan
+function deletePengaduan($conn, $id)
+{
+    $sql = "DELETE FROM tb_pengaduan WHERE id_pengaduan = '$id'";
+    return mysqli_query($conn, $sql);
 }

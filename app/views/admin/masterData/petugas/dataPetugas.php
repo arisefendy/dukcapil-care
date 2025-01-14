@@ -85,9 +85,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <td><?= $data['username'] ?></td>
                                     <td><?= $data['nama_level'] ?></td>
                                     <td class="text-center">
-                                        <a href="?url=detail-petugas&id=<?= $data['nik_petugas'] ?>" class="btn btn-primary btn-sm">
-                                            <i class="fa-solid fa-triangle-exclamation"></i><span class="ms-1">Detail</span></a>
-                                        <a href="?url=hapus-petugas&id=<?= $data['nik_petugas'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');"><i class="fa-regular fa-trash-can"></i><span class="ms-1">Hapus</span></a>
+                                        <div class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-2">
+                                            <a href="?url=detail-petugas&id=<?= $data['nik_petugas'] ?>" class="btn btn-primary btn-sm position-relative"
+                                                data-bs-toggle="tooltip"
+                                                data-bs-placement="top"
+                                                title="Lihat detail">
+                                                <i class="fa-solid fa-eye"></i></a>
+                                            <a href="?url=hapus-petugas&id=<?= $data['nik_petugas'] ?>" class="btn btn-danger btn-sm position-relative"
+                                                data-bs-toggle="tooltip"
+                                                data-bs-placement="top"
+                                                title="Hapus Petugas"
+                                                onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');"><i class="fa-regular fa-trash-can"></i></a>
+                                        </div>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

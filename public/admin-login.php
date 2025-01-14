@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (password_verify($password, $data['password'])) {
             session_start();
             $_SESSION['nik'] = $data['nik_petugas'];
+            $_SESSION['level'] = $data['nama_level'];
             $_SESSION['role'] = 'admin';
 
             $redirectUrl = "../app/views/admin/index.php";
@@ -75,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="text-center mb-4">
             <img class="mb-4" src="assets/images/jombang-logo.png" alt="Logo Pemkab Jombang" width="72">
             <h1 class="h3 mb-3 font-weight-normal">Dukcapil Care Jombang</h1>
-            <p>Login Sebagai Admin atau Petugas</p>
+            <p>Login Sebagai <strong>Admin</strong> atau <strong>Petugas</strong></p>
         </div>
 
         <div class="form-label-group">

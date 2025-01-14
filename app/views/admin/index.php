@@ -30,6 +30,9 @@
         <!-- Custom JS -->
         <script src="../../../public/assets/js/script.js"></script>
 
+        <!-- Tooltips -->
+        <script src="../../../public/assets/js/tooltips.js"></script>
+
         <!-- DataTables JS -->
         <script>
             $(document).ready(function() {

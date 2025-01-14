@@ -17,6 +17,7 @@ $dataPengaduan = getPengaduanProcess($conn);
                     <thead class="table-primary text-center">
                         <tr>
                             <th class="text-center">Tanggal</th>
+                            <th class="text-center">Nama</th>
                             <th class="text-center">Kategori</th>
                             <th class="text-center">Pesan</th>
                             <th class="text-center">Status</th>
@@ -28,26 +29,45 @@ $dataPengaduan = getPengaduanProcess($conn);
                             <?php foreach ($dataPengaduan as $data): ?>
                                 <tr>
                                     <td><?= $data['created_at'] ?></td>
+                                    <td><?= $data['nama_penduduk'] ?></td>
                                     <td><?= $data['nama_kategori'] ?></td>
                                     <td><?= $data['pesan'] ?></td>
                                     <td class="text-center">
                                         <span class="badge bg-<?= $data['status'] === 'selesai' ? 'success' : 'warning' ?>">
-                                            <?= $data['status'] ?>
+                                            <?= ucfirst($data['status']) ?>
                                         </span>
                                     </td>
-                                    <td class="d-flex flex-column gap-2">
-                                        <a href="?url=detail-pengaduan&id=<?= $data['id_pengaduan'] ?>&role=petugas" class="btn btn-primary btn-sm text-start">
-                                            <i class="fa-solid fa-triangle-exclamation"></i>
-                                            <span class="ms-1">Lihat Detail</span></a>
-                                        <a href="?url=beri-tanggapan&id=<?= $data['id_pengaduan'] ?>" class="btn btn-secondary btn-sm text-start">
-                                            <i class="fa-solid fa-comment"></i>
-                                            <span class="ms-1">Beri Tanggapan</span></a>
+                                    <td class="text-center">
+                                        <div class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-2">
+                                            <a href="?url=detail-pengaduan&id=<?= $data['id_pengaduan'] ?>&role=petugas"
+                                                class="btn btn-primary btn-sm position-relative"
+                                                data-bs-toggle="tooltip"
+                                                data-bs-placement="top"
+                                                title="Lihat detail">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </a>
+                                            <a href="?url=beri-tanggapan&id=<?= $data['id_pengaduan'] ?>"
+                                                class="btn btn-secondary btn-sm position-relative"
+                                                data-bs-toggle="tooltip"
+                                                data-bs-placement="top"
+                                                title="Beri tanggapan">
+                                                <i class="fa-solid fa-comment"></i>
+                                            </a>
+                                            <a href="?url=hapus-pengaduan&id=<?= $data['id_pengaduan'] ?>"
+                                                class="btn btn-danger btn-sm position-relative"
+                                                onclick="return confirm('Apakah Anda yakin ingin menghapus data pengaduan ini?');"
+                                                data-bs-toggle="tooltip"
+                                                data-bs-placement="top"
+                                                title="Hapus pengaduan">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </a>
+                                        </div>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
-                                <td colspan="5" class="text-center">Tidak ada data pengaduan masuk.</td>
+                                <td colspan="6" class="text-center">Tidak ada data pengaduan masuk.</td>
                             </tr>
                         <?php endif; ?>
                     </tbody>

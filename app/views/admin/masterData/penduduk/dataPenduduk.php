@@ -38,8 +38,18 @@ $userData = getAllPenduduk($conn);
                                     <td><?= $data['username'] ?></td>
                                     <td><?= $data['no_telp'] ?></td>
                                     <td class="text-center">
-                                        <a href="?url=detail-penduduk&id=<?= $data['nik_penduduk'] ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-triangle-exclamation"></i><span class="ms-1">Detail</span></a>
-                                        <a href="?url=hapus-penduduk&id=<?= $data['nik_penduduk'] ?>" class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i><span class="ms-1">Hapus</span></a>
+                                        <div class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-2">
+                                            <a href="?url=detail-penduduk&id=<?= $data['nik_penduduk'] ?>" class="btn btn-primary btn-sm position-relative"
+                                                data-bs-toggle="tooltip"
+                                                data-bs-placement="top"
+                                                title="Lihat detail">
+                                                <i class="fa-solid fa-eye"></i></a>
+                                            <a href="?url=hapus-penduduk&id=<?= $data['nik_penduduk'] ?>" class="btn btn-danger btn-sm position-relative"
+                                                data-bs-toggle="tooltip"
+                                                data-bs-placement="top"
+                                                title="Hapus Penduduk"
+                                                onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');"><i class="fa-regular fa-trash-can"></i></a>
+                                        </div>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

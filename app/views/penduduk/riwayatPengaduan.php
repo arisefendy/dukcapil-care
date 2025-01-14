@@ -32,16 +32,16 @@ $dataPengaduan = getPengaduanByNik($conn, $nik);
                                     <td><?= $data['pesan'] ?></td>
                                     <td class="text-center">
                                         <span class="badge bg-<?= $data['status'] === 'selesai' ? 'success' : 'warning' ?>">
-                                            <?= $data['status'] ?>
+                                            <?= ucfirst($data['status']) ?>
                                         </span>
                                     </td>
-                                    <td class="d-flex flex-column gap-1">
+                                    <td class="d-flex flex-column justify-content-center gap-2">
                                         <a href="?url=detail-pengaduan&id=<?= $data['id_pengaduan'] ?>" class="btn btn-primary btn-sm text-start">
-                                            <i class="fa-solid fa-triangle-exclamation"></i>
-                                            <span class="ms-1">Lihat Detail</span></a>
+                                            <i class="fa-solid fa-eye"></i>
+                                            <span class="ms-1"> Detail</span></a>
                                         <a href="?url=lihat-tanggapan&id=<?= $data['id_pengaduan'] ?>" class="btn btn-secondary btn-sm text-start">
                                             <i class="fa-solid fa-comment"></i>
-                                            <span class="ms-1">Lihat Tanggapan</span></a>
+                                            <span class="ms-1"> Tanggapan</span></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
