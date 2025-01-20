@@ -13,7 +13,7 @@ $dataPengaduan = getPengaduanByNik($conn, $nik);
 
         <div class="d-flex flex-column justify-content-center px-5">
             <div class="table-responsive">
-                <table id="dataPengaduanTable" class="table table-bordered table-striped">
+                <table id="dataPengaduanTable" class="table table-bordered table-striped dt-responsive nowrap">
                     <thead class="table-primary text-center">
                         <tr>
                             <th class="text-center">Tanggal</th>

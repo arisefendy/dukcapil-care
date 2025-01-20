@@ -2,7 +2,7 @@
 
 <!-- Hero Section -->
 <div class="hero-section text-black text-center py-5">
-    <h1>Selamat datang di Dukcapil Care Jombang!</h1>
+    <h1>Selamat datang di <span class="fw-bold" style="color: #14b8a6;">Dukcapil Care <span class="text-danger">Jombang</span></span>!</h1>
     <p class="lead">Tempat Anda dapat mengajukan pengaduan dan mengecek status pengaduan Anda.</p>
 </div>
 
